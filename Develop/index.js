@@ -32,12 +32,7 @@ let iPrompt = function () {
                 }
             }
         },
-        {
-            name: 'tableOfContents',
-            message: 'Give names to your table of contents',
-            type: 'input',
 
-        },
         {
             name: 'installation',
             message: 'How do you install this?',
@@ -65,8 +60,13 @@ let iPrompt = function () {
             type: 'input'
         },
         {
-            name: 'questions',
-            message: 'Do you have any questions?',
+            name: 'githubName',
+            message: 'Please enter your github username for the questions section',
+            type: 'input'
+        },
+        {
+            name: 'email',
+            message: 'Please enter your email address.',
             type: 'input'
         },
 
@@ -75,31 +75,66 @@ let iPrompt = function () {
         .then(function (answer) {
             let des = answer.description;
             let title = answer.title;
-            let table = answer.tableOfContents;
             let install = answer.installation;
             let use = answer.usage;
             let lic = answer.license;
             let cont = answer.contribute;
             let instr = answer.testInstructions;
-            let ques = answer.questions;
+            let github = answer.githubName;
+            let emailA = answer.email;
             let theWholeResponse =
-                `**${title}**
+                `# ${title}
 
-${table}
+**Table of Contents**
 
-*${des}*
+[Jump to Description](#Description)
+
+[Jump to Installation](#Installation)
+
+[Jump to Use](#Use)
+
+[Jump to Licenses](#Licenses)
+
+[Jump to Contributions](#Contributions)
+
+[Jump to Tests](#Tests)
+
+[Jump to Contact Info](#For-questions-please-contact-me-at-the-email-below!)
+
+
+=========================================================
+
+## Description
+
+${des}
+
+## Installation
 
 ${install}
 
+## Use
+
 ${use}
+
+## Licenses
 
 ${lic}
 
+## Contributions 
+
 ${cont}
+
+## Tests 
 
 ${instr}
 
-${ques}`;
+
+**For questions please contact me at the email below!**
+
+[${github}](https://github.com/Gelenhaus/markdownMaker)
+
+${emailA}
+`;
 
             myWritingFunction(theWholeResponse);
 
